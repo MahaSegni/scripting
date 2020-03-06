@@ -30,21 +30,28 @@ function liste()
 {
  echo "******"
 
-      echo `dpkg-query -f '${binary:Package}\n' -W`"\n"
-      echo "******"
-echo `dpkg-query -l '*' | less` 
+      #echo `dpkg-query -f '${binary:Package}\n' -W`"\n"
+echo `dpkg-query --show bash`
+      
+echo "******"
+#echo `dpkg-query -l '*' | less` 
 }
 function des()
 {
  echo "******"
-echo `dpkg-query -l '*' | less` 
+#echo`tasksel --task-desc bash`
+echo `dpkg-query -l 'bash' | less -f3: -2` 
 }
 
 function sauvegarder()
 {
  echo "******"
+echo "Création d'un fichier texte en cours ..."
+echo "-> Liste des noms des packages :" >  packages_distribution_date.txt
+dpkg-query -l 'bash'>> packages_distribution_date.txt
+echo "" >> packages_distribution_date.txt
  #grep dpkg -l |cut -3 >> test.txt
- cut -d: -f1 `dpkg -l`> test1.txt
+ #cut -d: -f1 `dpkg -l`> test1.txt
  echo "******"
 }
 function supp()
